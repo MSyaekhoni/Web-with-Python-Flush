@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Cek Usia</title>
+    </head>
+    <body>
+        <h1>Menghitung Usia berdasarkan Tahun Lahir</h1>
+        
+        <form method="POST" actions="/usia">
+            <label>Masukkan Tahun Lahir Anda</label>
+            <input type="number" name="tahun_lahir"/>
+            <button type="submit">Hitung</button>
+        </form>
+        
+        {% if usia is not none %}
+            <p>Usia Anda adalah {{usia}} Tahun</p>
+        {% endif %}
+        
+        <a href="/">Back to Home</a>
+    </body>
+</html>
