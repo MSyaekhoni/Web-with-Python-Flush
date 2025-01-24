@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -9,9 +10,9 @@ def main():
 
 @app.route("/usia", methods= ['GET', 'POST'])
 def cek_usia():
+    tahun_sekarang = datetime.now().year
     if request.method == 'POST':
         tahun_lahir = int(request.form['tahun_lahir'])
-        tahun_sekarang = 2025
         usia = tahun_sekarang - tahun_lahir
-        return render_template('cek_usia.html', usia= usia)
-    return render_template('cek_usia.html', usia= None)
+        return render_template('cek_usia.html', usia= usia, tahun_lahir= tahun_lahir)
+    return render_template('cek_usia.html', tahun_sekarang= tahun_sekarang, usia= None)

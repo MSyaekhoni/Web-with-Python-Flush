@@ -1,20 +1,26 @@
-<html>
-    <head>
-        <title>Cek Usia</title>
-    </head>
-    <body>
-        <h1>Menghitung Usia berdasarkan Tahun Lahir</h1>
-        
-        <form method="POST" actions="/usia">
-            <label>Masukkan Tahun Lahir Anda</label>
-            <input type="number" name="tahun_lahir"/>
-            <button type="submit">Hitung</button>
-        </form>
-        
-        {% if usia is not none %}
-            <p>Usia Anda adalah {{usia}} Tahun</p>
-        {% endif %}
-        
-        <a href="/">Back to Home</a>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hitung Usia</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <h1>Hitung Usia</h1>
+
+    <form method="POST" actions="/usia">
+      <label>Masukkan Tahun Lahir Anda</label>
+      <input type="number" id="tahun_lahir" name="tahun_lahir" required min="1900" max="{{ tahun_sekarang }}" />
+      <button type="submit">Hitung</button>
+    </form>
+
+    {% if usia is not none and usia > 0 %}
+        <h2>Hasil</h2>
+        <p>Tahun Lahir: {{ tahun_lahir }}</p>
+        <p>Usia: {{usia}} Tahun</p>
+    {% endif %}
+
+    <a href="/">Back to Home</a>
+  </body>
 </html>
